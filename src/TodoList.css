@@ -41,7 +41,7 @@
         height: calc(var(--vh, 1vh) * 100);
     }
     .TodoList-todos {
-        max-height: 75%;
+        max-height: 20rem;
     }
 }
 

@@ -4,24 +4,40 @@ import Todo from './Todo';
 import './TodoList.css';
 
 class TodoList extends Component {
+    static defaultProps = {
+        savedTodos: JSON.parse(localStorage.getItem("todos")),
+    }
     constructor(props) {
         super(props);
+        const { savedTodos } = this.props;
         this.state = {
-            todos: []
+            todos: savedTodos ? savedTodos : [],
         }
         this.add = this.add.bind(this);
         this.edit = this.edit.bind(this);
         this.delete = this.delete.bind(this);
     }
     add(newTodo) {
-        this.setState(state => ({todos: [...state.todos, newTodo]}));
+        this.setState(
+            {todos: [...this.state.todos, newTodo]},
+            () => localStorage.setItem("todos", JSON.stringify(this.state.todos)));
     }
     edit(newTodo) {
         const { todos } = this.state;
-        this.setState(() => ({todos: todos.map(todo => todo.id === newTodo.id ? todo = newTodo : todo)}))
+        this.setState(
+            () => (
+                {todos: todos.map(todo => todo.id === newTodo.id ? todo = newTodo : todo)}
+            ),
+            () => localStorage.setItem("todos", JSON.stringify(this.state.todos))
+        )
     }
     delete(todoId) {
-        this.setState(state => ({todos: state.todos.filter(todo => todo.id !== todoId)}))
+        this.setState(
+            state => (
+                {todos: state.todos.filter(todo => todo.id !== todoId)}
+            ),
+            () => localStorage.setItem("todos", JSON.stringify(this.state.todos))
+        )
     }
     render() {
         const { todos } = this.state;

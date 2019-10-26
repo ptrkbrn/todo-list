@@ -34,8 +34,9 @@ class Todo extends Component {
         const { editing } = this.state;
         this.setState({editing: !editing})
     }
-    markComplete() {
+    markComplete(evt) {
         const { complete } = this.state;
+        evt.stopPropagation();
         this.setState({complete: !complete});
     }
     render() {
