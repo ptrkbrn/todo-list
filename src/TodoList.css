@@ -1,0 +1,46 @@
+.TodoList {
+    color: white;
+    background-color: #2980b9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20rem;
+    min-height: 25rem;
+    margin: auto;
+    -webkit-box-shadow: -15px -15px 0px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: -15px -15px 0px 0px rgba(0,0,0,0.1);
+    box-shadow: -15px -15px 0px 0px rgba(0,0,0,0.1);
+}
+.TodoList-todos {
+    max-height: 15rem;
+    overflow: scroll;
+}
+.TodoList-filler {
+    color: rgba(230,230,230,.3)
+}
+.TodoList-header {
+    text-align: left;
+    font-weight: 400;
+    padding: 1rem 2rem 0 2rem;
+}
+.TodoList-header h1 {
+    font-weight: 400;
+}
+.TodoList-header h1 {
+    margin-bottom: 0;
+}
+.TodoList-header p {
+    margin-top: 0;
+    font-size: .8rem;
+}
+
+@media only screen and (max-width: 415px) {
+    .TodoList {
+        width: 100vw;
+        height: 100vh;  /* fallback height */
+        height: calc(var(--vh, 1vh) * 100);
+    }
+    .TodoList-todos {
+        max-height: 75%;
+    }
+}

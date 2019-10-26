@@ -1,22 +1,17 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  height: 100vh;
+  background: rgb(241,196,15);
+  background: linear-gradient(231deg, rgba(241,196,15,0.35) 10%, rgba(192,57,43,0.35) 69%);
 }
 
-.App-link {
-  color: #09d3ac;
+@media only screen and (max-width: 815px) {
+  .App {
+    height: 100vh /* fallback */;
+    height: calc(var(--vh, 1vh) * 100);
+  }
 }
