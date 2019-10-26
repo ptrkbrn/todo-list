@@ -41,8 +41,7 @@ class Todo extends Component {
     render() {
         const { todo, editing, complete } = this.state;
         const displayTodo = !editing
-                ? <p className={complete ? 'complete' : undefined}
-                     onClick={this.markComplete}>
+                ? <p className={complete ? 'complete' : undefined}>
                      {todo}
                 </p>
                 : <form className="Todo-form" onSubmit={this.handleSubmit}>
@@ -54,7 +53,7 @@ class Todo extends Component {
                     <button className="Todo-button fas fa-check"></button>
                 </form>
         return (
-            <div className="Todo">
+            <div className="Todo" onClick={this.markComplete}>
                 {displayTodo}
                 {!editing && <div className="Todo-buttons">
                     <i onClick={this.startEdit}className="Todo-button fas fa-edit"></i>
