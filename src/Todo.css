@@ -32,3 +32,15 @@
     text-decoration: line-through;
     color: rgba(210,210,210)
 }
+
+@media only screen and (min-width: 416px) and  (max-width: 1025px) {
+    .Todo {
+        font-size: 2rem;
+    }
+    .Todo-button {
+        font-size: 2rem;
+    }
+    .Todo-form input {
+        font-size: 2rem;
+    }
+}

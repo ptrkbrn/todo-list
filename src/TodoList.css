@@ -44,3 +44,16 @@
         max-height: 75%;
     }
 }
+
+@media only screen and (min-width: 416px) and  (max-width: 1025px) {
+    .TodoList {
+        height: 75%;
+        width: 75%;
+    }
+    .TodoList-header h1 {
+        font-size: 4rem;
+    }
+    .TodoList-header p {
+        font-size: 1.5rem;
+    }
+}

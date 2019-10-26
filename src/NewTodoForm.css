@@ -12,13 +12,13 @@
 .NewTodoForm input {
     width: 100%;
     box-sizing: border-box;
-    height: 3rem;
+    min-height: 3rem;
     padding: .5rem 1rem;
     font-size: 1rem;
-    text-align: center;
+    border: 1px solid white;
 }
 .NewTodoForm-button {
-    height: 2rem;
+    min-height: 2rem;
     width: 100%;
     font-size: 1rem;
     font-weight: bold;
@@ -28,4 +28,18 @@
     box-sizing: border-box;
     margin-top: .25rem;
     cursor: pointer;
+}
+
+@media only screen and (min-width: 416px) and (max-width: 1025px) {
+    .NewTodoForm {
+        width: 75%;
+    }
+    .NewTodoForm input {
+        font-size: 2rem;
+        padding: 1rem;
+    }
+    .NewTodoForm-button {
+        font-size: 2rem;
+        padding: 1rem;
+    }
 }
