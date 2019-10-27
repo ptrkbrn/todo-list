@@ -29,6 +29,9 @@
     margin-top: .25rem;
     cursor: pointer;
 }
+.NewTodoForm-button:hover {
+    background-color: #3498db;
+}
 
 @media only screen and (min-width: 416px) and (max-width: 1025px) {
     .NewTodoForm {

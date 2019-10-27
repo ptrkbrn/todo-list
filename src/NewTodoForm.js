@@ -6,21 +6,20 @@ class NewTodoForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            todo: '',
+            text: '',
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange(evt) {
-        this.setState({todo: evt.target.value})
+        this.setState({text: evt.target.value})
     }
     handleSubmit(evt) {
         evt.preventDefault();
         const { addTodo } = this.props;
-        const { todo } = this.state;
-        const newTodo = {text: todo, id: uuid()}
+        const newTodo = {...this.state, id: uuid(), complete: false}
         addTodo(newTodo);
-        this.setState({todo: ''});
+        this.setState({text: ''});
     }
     render() {
         return (
@@ -30,7 +29,7 @@ class NewTodoForm extends Component {
                     name="todo"
                     id="todo"
                     placeholder="Add a new todo..."
-                    value={this.state.todo}
+                    value={this.state.text}
                     onChange={this.handleChange}
                     autoFocus
                     autoComplete="off"

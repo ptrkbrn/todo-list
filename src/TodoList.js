@@ -15,6 +15,7 @@ class TodoList extends Component {
         }
         this.add = this.add.bind(this);
         this.edit = this.edit.bind(this);
+        this.toggleComplete = this.toggleComplete.bind(this);
         this.delete = this.delete.bind(this);
     }
     add(newTodo) {
@@ -22,12 +23,18 @@ class TodoList extends Component {
             {todos: [...this.state.todos, newTodo]},
             () => localStorage.setItem("todos", JSON.stringify(this.state.todos)));
     }
-    edit(newTodo) {
+    edit(todoId, newText) {
         const { todos } = this.state;
-        this.setState(
-            () => (
-                {todos: todos.map(todo => todo.id === newTodo.id ? todo = newTodo : todo)}
-            ),
+        const updatedTodos = todos.map(todo => todo.id === todoId ? { ...todo, text: newText} : todo)
+        this.setState({todos: updatedTodos},
+            () => localStorage.setItem("todos", JSON.stringify(this.state.todos))
+        )
+    }
+    toggleComplete(todoId) {
+        console.log(todoId)
+        const { todos } = this.state;
+        const updatedTodos = todos.map(todo => todo.id === todoId ? { ...todo, complete: !todo.complete} : todo)
+        this.setState({todos: updatedTodos},
             () => localStorage.setItem("todos", JSON.stringify(this.state.todos))
         )
     }
@@ -49,9 +56,17 @@ class TodoList extends Component {
                         <p>Keep track of yr shit. Created w/ React.</p>
                         <hr />
                     </header>
-                    <div className="TodoList-todos">
-                        {todos.filter(todo => todo.text).map(todo => <Todo todo={todo.text} id={todo.id} key={todo.id} editTodo={this.edit} deleteTodo={this.delete}/>)}
-                    </div>
+                    <ul className="TodoList-todos">
+                        {todos.filter(todo => todo.text).map(todo => <Todo
+                                                                        todo={todo.text}
+                                                                        id={todo.id}
+                                                                        key={todo.id}
+                                                                        complete={todo.complete}
+                                                                        editTodo={this.edit}
+                                                                        toggleTodo={this.toggleComplete}
+                                                                        deleteTodo={this.delete}
+                                                                    />)}
+                    </ul>
                 </div>
                 {!todos[0]  && <h1 className="TodoList-filler">Todos go here.</h1>}
                 <NewTodoForm addTodo={this.add} />
